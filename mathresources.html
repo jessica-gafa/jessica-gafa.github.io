@@ -7,6 +7,50 @@
 </head>
 <body style="background-color: #FFDDB3;">
     <header>
+         <style>
+            nav {
+                background-color: #BD3200;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+            
+            nav ul {
+                list-style-type: none;
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                background-color: #BD3200;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin: 1px;
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 10px;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            nav a:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
+
+            body {
+                padding-top: 150px;
+                margin: 40;
+            }
+        </style>
         <!--Navigation bar-->
         <nav>
             <ul>
@@ -20,9 +64,55 @@
         </nav>
         
         <h1 style="color: #BD3200;"><em>Jessica Gafa</em></h1>
-        <h1 style="color: #BD3200; font-family: 'Courier New', Courier, monospace;">Math Resources</h1>
+        <h2 style="color: #BD3200; font-family: 'Courier New', Courier, monospace;">Math Resources</h2>
     </header>
-    <main></main>
+    <main>
+        <section>
+            <style>
+                .flex-container {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                }
+
+                .project-card {
+                    flex: 1 1   150px;
+                    background-color: #ffe8cc;
+                    border: 1px solid #ffe8cc;
+                    padding: 15px;
+                    border-radius: 8px;
+                    box-shadow: 1px 2px 4px #ffe8cc;
+                }
+
+                .project-card img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 4px;
+                }
+
+                .project-card h3 {
+                    margin-top: 10px;
+                    font-size: 1.1rem;
+                    color: #BD3200;
+                }
+            </style>
+            <div class="flex-container">
+                <div class="project-card">
+                    <img src="images/mathsymbols.png" alt="illustration of an addition sign, multiplication sign, subtraction sign and a division sign.">
+                    <h3>Solving Linear Equations</h3>
+                    <p>A short video tagreted at stages 4 and 5 on how to solve linear equations.</p>
+                </div>
+
+                <div class="project-card">
+                    <img src="images/mathbooks.png" alt="An image of books stacked on top of each other.">
+                    <h3>Expanding Brackets</h3>
+                    <p>A short video aimed at stage 4 on how to expand brackets using the rainbow method and the FOIL method.</p>
+                </div>
+            </div>
+        </section>
+    </main>
     <footer></footer>
 </body>
 </html>

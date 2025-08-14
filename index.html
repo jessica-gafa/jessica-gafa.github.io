@@ -7,23 +7,67 @@
 </head>
 <body style="background-color: #DAF4B7;">
     <header>
-        <!--Navigation bar-->
-        <nav>
-            <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="teachingphilosophy.html">Teaching Philosophy</a></li>
-            <li><a href="clasroommanagement.html">Classroom Management</a></li>
-            <li><a href="mathresources.html">Math Resources</a></li>
-            <li><a href="resumeexperience.html">Resume and Experience</a></li>
-            </ul>
-        </nav>
+        <style>
+            nav {
+                background-color: #1E7400;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+            
+            nav ul {
+                list-style-type: none;
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                background-color: #1E7400;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin: 1px;
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 10px;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            nav a:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
+
+            body {
+                padding-top: 150px;
+                margin: 40;
+            }
+        </style>
+                <!--Navigation bar-->
+                <nav>
+                    <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Me</a></li>
+                    <li><a href="teachingphilosophy.html">Teaching Philosophy</a></li>
+                    <li><a href="clasroommanagement.html">Classroom Management</a></li>
+                    <li><a href="mathresources.html">Math Resources</a></li>
+                    <li><a href="resumeexperience.html">Resume and Experience</a></li>
+                    </ul>
+                </nav>
     
         <!--Headings-->
         <h1 style="color: #1E7400;"><em>Jessica Gafa</em></h1>
         <h2 style="color: #1E7400;  font-family: 'Courier New', Courier, monospace;">My Teaching and Education Philosophy</h2>
     </header>
-    <main>
+    <img src="images/profilepicgreen.png" width="200" alt="A circle photo of Jessica Looking at the camera smiling with a dark green border.;">
     </main>
     <footer></footer>
 </body>

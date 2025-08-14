@@ -8,6 +8,50 @@
 </head>
 <body style="background-color: #FFE2E4;">
   <header>
+    <style>
+            nav {
+                background-color: #A64B52;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
+            
+            nav ul {
+                list-style-type: none;
+                padding: 5px;
+                margin: 5px;
+                display: flex;
+                background-color: #A64B52;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin: 1px;
+                flex-wrap: nowrap;
+            }
+
+            nav a {
+                display: block;
+                padding: 12px 10px;
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            nav a:hover {
+                background-color: #FFFFFF;
+                color: black;
+            }
+
+            body {
+                padding-top: 150px;
+                margin: 40;
+            }
+        </style>
         <!--Navigation bar-->
         <nav>
             <ul>
@@ -20,13 +64,14 @@
             </ul>
         </nav>
     
-        <!--Main heading-->
+        <!--Main heading and page title-->
         <h1 style="color: #A64B52;"><em>Jessica Gafa</em></h1>
+        <h2 style="color: #A64B52; font-family: 'Courier New', Courier, monospace;"><em>About Me</em></h2>
     </header>
     <main>
         <section>
-            <h1 style="color: #A64B52; font-family: 'Courier New', Courier, monospace;"><em>About Me</em></h1>
-            <img src="images/profilepicpink.png" width="300" alt="Square shaped portrait of Jessica Gafa, smiling at the camera">
+            
+            <img src="images/profilepicroundcorners.png" width="300" alt="Square shaped portrait of Jessica Gafa, smiling at the camera">
             <!--About my study-->
             <p>Hello, I'm Jessica Gafa. I am a pre-service teacher attending the Australian Catholic University. I am currently completing a Bachelor of Secondary Education along with a Bachelor of Arts in which I am focussing on Mathematics and Digital Technologies which I aim to . At this point in time, I have completed one teaching placement in the Parramatta Catholic Diocese. </p>
         </section>
