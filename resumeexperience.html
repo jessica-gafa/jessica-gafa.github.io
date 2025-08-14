@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="background-color: #CCF7F0;">
     <header>
         <!--Navigation bar-->
         <nav>
@@ -19,8 +19,8 @@
             </ul>
         </nav>
         
-        <h1><em>Jessica Gafa</em></h1>
-        <h1 style="font-family: 'Courier New', Courier, monospace;">My Resume and Teaching Experience</h1>
+        <h1 style="color: #00724E;"><em>Jessica Gafa</em></h1>
+        <h1 style="color: #00724E; font-family: 'Courier New', Courier, monospace;">My Resume and Teaching Experience</h1>
     </header>
     <main>
         <section>
@@ -31,15 +31,14 @@
                     margin-top: 10px;
                     font-family: 'Courier New', Courier, monospace;
                 }
-
                 th, td {
-                    border: 1px soilid #ccc;
+                    border: 3px solid #00724E;
                     padding: 10px 12px;
                     text-align: left;
                 }
 
-                thead {
-                    background-color: f0f0f0;
+                 thead {
+                    background-color: #FFFFFF;
                 }
 
                 th {
@@ -47,23 +46,33 @@
                     font-weight: bold;
                 }
 
-                tr:nth-child(even){
-                background-color: #fafafa;
+                tbody tr:nth-child(odd){
+                background-color: #E6FFFF;
                 }
 
-                h2 {
-                    font-family: 'Courier New', Courier, monospace;
-                    font-size: 1.4rem;
-                    margin-bottom: 8px;
-                    color: #2c3e50
+                
+                tbody tr:nth-child(even){
+                background-color:#FFFFFF;
                 }
+
+               
             </style>
             <table>
                 <thead>
-                    <tr><th>School</th><th>Location</th><th>Placement Length</th></tr>
+                    <tr><th>School</th>
+                        <th>Location</th>
+                        <th>Placement Length</th>
+                        <th>School Term</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Parramatta Marist High School</td><td>Westmead</td><td>Three Weeks</td></tr>
+                    <tr><td>Parramatta Marist High School</td>
+                        <td>Westmead</td>
+                        <td>Three Weeks</td>
+                        <td>Term 2, 2025</td></tr>
+                        <tr><td>Parramatta Marist High School</td>
+                        <td>Westmead</td>
+                        <td>Three Weeks</td>
+                        <td>Term 2, 2025</td></tr>
                 </tbody>
             </table>
         </section>
