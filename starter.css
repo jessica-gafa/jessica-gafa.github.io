@@ -47,6 +47,12 @@ body {
   font-family: var(--font-body);  /* Sets font for body text */
   line-height: 1.6;               /* Improves readability by spacing out lines */
 }
+
+html {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
 .site-title { 
   font-weight: 700;               /* Bold text */
   letter-spacing: 0.5px;          /* Slight spacing between letters */
@@ -62,6 +68,11 @@ h1, h2, h3 {
   line-height: 1;                 /* Tight line spacing for headings */
   margin: 0 0 0.6em;              /* Space below headings */
   color: var(--brand);            /* Brand colour */
+  text-align: center;             /* Centers text */
+}
+
+h1{
+   padding-top: 50px;             /*Allows for title to be seen when it is in a smaller window*/
 }
 p { 
   margin: 0 0 1em;                /* Space below paragraphs */
@@ -151,9 +162,31 @@ body {
 .active {
   text-decoration: underline;   /* Indicates active page link */
 }
-@media (max-width: 640px) {               /* responsiveness for viewing on mobile */
-  nav .container { flex-wrap: wrap; }
-  nav ul { width: 100%; justify-content: center; }
+@media (max-width: 640px) {
+  nav .container {
+    flex-wrap: wrap;
+  }
+
+  nav ul {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4px; /* optional: reduces spacing between buttons */
+  }
+
+  nav li {
+    flex: 1 1 auto; /* let nav items wrap cleanly */
+    text-align: center;
+  }
+
+  nav a {
+    font-size: 14px;       /* slightly smaller font for mobile */
+    padding: 8px 6px;       /* tighter padding so they fit better */
+  }
+
+  body {
+    padding-top: 140px;    /* adds extra space under the now-wrapped nav */
+  }
 }
 
 /* ---------- 7) Sections -------------------- */
