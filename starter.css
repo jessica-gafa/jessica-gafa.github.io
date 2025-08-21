@@ -251,35 +251,34 @@ tbody tr:nth-child(even){
 }
 
 /* ---------- 8) Cards / Gallery ------------- */
-.card-grid {
-  display: grid;                                                  /* Grid layout */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    /* Responsive columns */
-  gap: var(--spacing);                                            /* Space between grid items */
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-top: 20px;
 }
-.card {
-  background: #fff;             /* White background */
-  border-radius: var(--radius);   /* Rounded corners */
-  box-shadow: var(--shadow);      /* Soft shadow */
-  overflow: hidden;               /* Hides overflowing content */
-  display: flex;                  /* Flex layout inside card */
-  flex-direction: column;         /* Stacks content vertically */
+
+.project-card {
+  flex: 1 1 150px;
+  background-color: #E6FFFF;
+  border: 1px solid #E6FFFF;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 1px 2px 4px #E6FFFF;
 }
-.card img { 
-  width: 100%;                  /* Image fills card */
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
-.card .content { 
-  padding: var(--spacing);      /* Space around content */
+
+  .project-card h3 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #335966;
 }
-.card h3 { 
-  margin-top: 0.4em;        /* Space above heading */
-  margin-bottom: 0.3em;     /* Space below heading */
-}
-.card p { 
-  color: var(--muted);      /* Muted text colour */
-  margin-bottom: 0.8em;     /* Space below paragraph */
-}
-.card a { display: block; }
-.card:hover { transform: translateY(-2px); transition: transform .15s ease; }
 
 
 /* ---------- 9) Forms ----------------------- */
