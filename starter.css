@@ -149,7 +149,7 @@ body {
 }
 
 .active {
-  background-color: grey;     /* Indicates active page link */
+  text-decoration: underline;   /* Indicates active page link */
 }
 @media (max-width: 640px) {               /* responsiveness for viewing on mobile */
   nav .container { flex-wrap: wrap; }
@@ -373,6 +373,25 @@ footer .container {
 }
 .p-3 { 
   padding: 24px !important;     /* Large padding */
+}
+
+
+/*----------------- 12) About Me Page Picture Next To Text -------------------------*/
+.adjacentpic {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.adjacentpic img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.adjacenttext {
+  max-width: 600px;
 }
 
 /* End of starter.css */
