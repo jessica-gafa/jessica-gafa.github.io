@@ -1,0 +1,379 @@
+/* =====================================================
+   COMP208 starter.css (plug-and-play)
+   Purpose: Give you a clean visual baseline quickly.
+   How to use: Link this in <head> of every page:
+     <link rel="stylesheet" href="starter.css">
+   Tip: Read the comments and tweak values as you go.
+   ===================================================== */
+
+/* ---------- 1) CSS Reset / Base ----------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;   /* Include padding & border in total size for all elements + pseudo-elements */
+}
+html, body { 
+  margin: 0;    /* Removes default browser margin */
+  padding: 0;   /* Removes default browser padding */
+}
+img { 
+  max-width: 100%;  /* Ensures images never exceed container width */
+  height: auto;     /* Maintains image aspect ratio */
+  display: block;   /* Removes small gap under images by making them block-level */
+}
+
+/* ---------- 2) Core Theme Tokens ----------- */
+:root {
+  --brand: #335966;        /* primary colour */
+  --brand-2: #FFFFFF;      /* accent colour */
+  --bg: #CCF2FF;           /* page background */
+  --head: #335966;         /* main header colour */
+  --text: Black;         /* default text */
+  --muted: #666666;        /* secondary text */
+  --surface: #f6f8fb;      /* card/section bg */
+  --radius: 12px;          /* rounded corners */
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);    /* Subtle shadow for depth */
+  --spacing: 16px;         /* base spacing unit */
+  --maxw: 1100px;          /* content width */
+  --font-body: "Inter", system-ui, Helvetica, Arial, sans-serif, Courier;  /* Body font */
+  --font-head: "Outfit", ui-sans-serif, system-ui, Helvetica, Arial, sans-serif, Courier;   /* Headings font */
+}
+
+/* ---------- 3) Page Defaults --------------- */
+body {
+  background: var(--bg);          /* Uses background colour from variables */
+  color: var(--text);             /* Default text colour */
+  font-family: var(--font-body);  /* Sets font for body text */
+  line-height: 1.6;               /* Improves readability by spacing out lines */
+}
+.site-title { 
+  font-weight: 700;               /* Bold text */
+  letter-spacing: 0.5px;          /* Slight spacing between letters */
+}
+main {
+  width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive content width */
+  margin: 32px auto;                                  /* Centers main content with spacing */
+}
+
+/* ---------- 4) Typography ------------------ */
+h1, h2, h3 {
+  font-family: var(--font-head);  /* Uses heading font */
+  line-height: 1;                 /* Tight line spacing for headings */
+  margin: 0 0 0.6em;              /* Space below headings */
+  color: var(--brand);            /* Brand colour */
+}
+p { 
+  margin: 0 0 1em;                /* Space below paragraphs */
+  color: var(--text);             /* Standard text colour */
+  font-size: 0.95rem;             /* Slightly smaller than default font size */
+}
+small { 
+  color: var(--muted);            /* Muted grey colour for less emphasis */
+}
+
+/* ---------- 5) Links ----------------------- */
+a { 
+  color: var(--brand);          /* Brand colour for links */
+  text-decoration: none;        /* No underline by default */
+}
+a:hover, a:focus { 
+  text-decoration: underline;   /* Underline on hover/focus for accessibility */
+}
+
+/* ---------- 6) Header / Nav ---------------- */
+header {
+  background: var(--bg);  /* Gradient background */
+  color: white;                                           /* White text */
+  padding: 18px 0;                                          /* Vertical spacing */
+  margin-bottom: 0;                                         /* Removes gap under header */
+}
+header .container {
+  width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive width */
+  margin: 0 auto;                                     /* Centers horizontally */
+  display: flex;                                      /* Aligns children horizontally */
+  gap: var(--spacing);                                /* Space between flex items */
+  align-items: center;                                /* Vertically centers items */
+  justify-content: space-between;                     /* Pushes items apart */
+}
+header h1 {
+  width: min(100% - 2*var(--spacing), var(--maxw));   /* Responsive heading width */
+  margin: 32px auto;                                  /* Centers heading */
+  color: var(--head);                                 /* Special header colour */
+}
+nav {
+  background-color: #335966;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  background-color: #335966;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav li {
+  margin: 1px;
+  flex-wrap: nowrap;
+            }
+
+nav a {
+  display: block;
+  padding: 12px 10px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+nav a:hover {
+  background-color: #FFFFFF;
+  color: black;
+}
+nav a:focus-visible {     
+  outline: 2px solid #fff;              /* white outline for increased accessibility/ keyboard-focus styling */
+  outline-offset: 2px;                    /* outline offset for increased accessibility/ keyboard-focus styling */
+}
+
+body {
+  padding-top: 100px;
+  margin: 40;
+}
+
+.active {
+  background-color: grey;     /* Indicates active page link */
+}
+@media (max-width: 640px) {               /* responsiveness for viewing on mobile */
+  nav .container { flex-wrap: wrap; }
+  nav ul { width: 100%; justify-content: center; }
+}
+
+/* ---------- 7) Sections -------------------- */
+.section {
+  background: var(--surface);           /* Light background for section */
+  border-radius: var(--radius);         /* Rounded corners */
+  padding: calc(var(--spacing) * 1.25); /* Internal spacing */
+  margin: 18px 0;                       /* Vertical spacing */
+  box-shadow: var(--shadow);            /* Subtle shadow */
+}
+.profile {
+  display: flex;                  /* Enables horizontal flex layout (side-by-side arrangement) */
+  align-items: center;            /* Vertically centres items along the cross-axis */
+  gap: 20px;                      /* Adds 20px of space between text and image */
+}
+.profile-text {
+  flex: 1;                        /* Allows the text section to grow and fill available space */
+}
+.profile-photo {
+  display: block;                 /* Makes the image behave like a block element (so margin works) */
+  margin-left: auto;              /* Centres the image horizontally */
+  margin-right: auto;             /* Centres the image horizontally */
+  width: 20%;                     /* Limits the image width to 35% of its container */
+  border-radius: 8px;             /* Rounds the corners of the image slightly */
+}
+.main-photo { 
+  max-width: 250px;       /* resizes maximum width of these images within the sections */
+  width: 100%;            /* keeps proportions and maintains responsiveness */
+  height: auto;           /* Maintains aspect ratio */
+  padding-bottom: 25px;   /* Space below image so text isn’t too close */
+}
+.infographic, .sample-photo { 
+  max-width: 560px;       /* resizes maximum width of these images within the sections */
+  width: 100%;            /* keeps proportions and maintains responsiveness */
+  height: auto;           /* Maintains aspect ratio */
+  padding-bottom: 25px;   /* Space below image so text isn’t too close */
+}
+.embed-video {
+  padding-bottom: 25px;
+}
+table {
+  width:100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-family: 'Courier New', Courier, monospace;
+}
+th, td {
+  border: 1px solid #335966;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+thead {
+  background-color: #FFFFFF;
+}
+
+th {
+  color: #333;
+  font-weight: bold;
+}
+
+tbody tr:nth-child(odd){
+  background-color: #E6FFFF;
+}
+
+                
+tbody tr:nth-child(even){
+  background-color:#FFFFFF;
+}
+
+.flex-container {
+  display: flex;                    /* Horizontal flex layout */
+  flex-wrap: wrap;                  /* Wraps to next line if needed */
+  gap: 20px;                        /* Space between items */
+  justify-content: space-between;   /* Space between items */
+  margin-top: 20px;                 /* Space above container */
+}
+.project-card {
+  flex: 1 1 350px;                /* Responsive card width */
+  background-color: #f9f9f9;    /* Light grey background */
+  border: 1px solid #ddd;       /* Light border */
+  padding: 15px;                  /* Space inside card */
+  border-radius: 8px;             /* Rounded corners */
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.1);      /* Soft shadow */
+}
+.project-card img {
+  width: 100%;          /* Image fills card width */
+  height: auto;         /* Maintains aspect ratio */
+  border-radius: 4px;   /* Slightly rounded image corners */
+}
+.project-card h3 {
+  margin-top: 10px;     /* Space above heading */
+  font-size: 1.1rem;    /* Slightly larger heading text */
+  color: #2c3e50;     /* Dark grey-blue colour */
+}
+
+/* ---------- 8) Cards / Gallery ------------- */
+.card-grid {
+  display: grid;                                                  /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    /* Responsive columns */
+  gap: var(--spacing);                                            /* Space between grid items */
+}
+.card {
+  background: #fff;             /* White background */
+  border-radius: var(--radius);   /* Rounded corners */
+  box-shadow: var(--shadow);      /* Soft shadow */
+  overflow: hidden;               /* Hides overflowing content */
+  display: flex;                  /* Flex layout inside card */
+  flex-direction: column;         /* Stacks content vertically */
+}
+.card img { 
+  width: 100%;                  /* Image fills card */
+}
+.card .content { 
+  padding: var(--spacing);      /* Space around content */
+}
+.card h3 { 
+  margin-top: 0.4em;        /* Space above heading */
+  margin-bottom: 0.3em;     /* Space below heading */
+}
+.card p { 
+  color: var(--muted);      /* Muted text colour */
+  margin-bottom: 0.8em;     /* Space below paragraph */
+}
+.card a { display: block; }
+.card:hover { transform: translateY(-2px); transition: transform .15s ease; }
+
+
+/* ---------- 9) Forms ----------------------- */
+form {
+  display: grid;    /* Grid layout for form elements */
+  gap: 12px;        /* Space between form items */
+}
+label {
+  font-weight: 600;     /* Semi-bold labels */
+}
+input[type="text"], input[type="email"], textarea {
+  width: 100%;                    /* Full width fields */
+  padding: 10px 12px;             /* Internal spacing */
+  border: 1px solid #d4d7dd;    /* Light border */
+  border-radius: 10px;            /* Rounded corners */
+  background: #fff;             /* White background */
+  transition: border-color 0.2s, box-shadow 0.2s;     /* Smooth focus effect */
+}
+input:focus, textarea:focus {
+  outline: none;                                  /* Removes default outline */
+  border-color: var(--brand);                     /* Brand border on focus */
+  box-shadow: 0 0 0 3px rgba(28,76,150,0.15);   /* Glow on focus */
+}
+textarea { 
+  min-height: 140px;        /* Minimum height */
+  resize: vertical;         /* Only resize vertically */
+}
+button, input[type="submit"] {
+  background: var(--brand);   /* Brand colour */
+  color: white;             /* White text */
+  border: none;               /* No border */
+  padding: 10px 16px;         /* Internal spacing */
+  border-radius: 10px;        /* Rounded corners */
+  cursor: pointer;            /* Pointer on hover */
+}
+button:hover, input[type="submit"]:hover {
+  background: #163d79;          /* Darker brand colour on hover */
+}
+.error {
+  color: red;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 5px;
+}
+
+/* ---------- 10) Footer --------------------- */
+footer {
+  margin-top: 40px;          /* Space above footer */
+  padding: 22px 0;           /* Vertical spacing */
+  background: var(--brand);  /* Brand background */
+  color: #cfd7ff;          /* Light text colour */
+}
+footer p {
+  color: white;     /* White paragraph text */
+}
+footer .container {
+  width: min(100% - 2*var(--spacing), var(--maxw));       /* Responsive width */
+  margin: 0 auto;                     /* Centered container */
+  display: flex;                      /* Flex layout */
+  justify-content: space-between;     /* Space between items */
+  gap: var(--spacing);                /* Gap between items */
+  flex-wrap: wrap;                    /* Allows wrapping on smaller screens */
+}
+
+/* ---------- 11) Utilities ------------------ */
+.text-center {            /* Utility class: centers text */
+  text-align: center;           /* Centers text horizontally */
+}
+.img-center {             /* Utility class: centers an image and scales it */
+  display: block;               /* Make the image a block element so margins can take effect */
+  margin-left: auto;            /* Auto left margin helps center horizontally */
+  margin-right: auto;           /* Auto right margin completes horizontal centering */
+  width: 40%;                   /* Scale image to 40% of its container’s width */
+}
+.m-0 { 
+  margin: 0 !important;         /* Removes margin */
+}
+.mt-1 { 
+  margin-top: 8px !important;   /* Small top margin */
+}
+.mt-2 { 
+  margin-top: 16px !important;  /* Medium top margin */
+}
+.mt-3 { 
+  margin-top: 24px !important;  /* Large top margin */
+}
+.p-1 { 
+  padding: 8px !important;      /* Small padding */
+}
+.p-2 { 
+  padding: 16px !important;     /* Medium padding */
+}
+.p-3 { 
+  padding: 24px !important;     /* Large padding */
+}
+
+/* End of starter.css */
