@@ -31,7 +31,7 @@ img {
   --head: #335966;         /* main header colour */
   --text: Black;         /* default text */
   --muted: #666666;        /* secondary text */
-  --surface: #f6f8fb;      /* card/section bg */
+  --surface: #E6FFFF;      /* card/section bg */
   --radius: 12px;          /* rounded corners */
   --shadow: 0 4px 12px rgba(0,0,0,0.08);    /* Subtle shadow for depth */
   --spacing: 16px;         /* base spacing unit */
