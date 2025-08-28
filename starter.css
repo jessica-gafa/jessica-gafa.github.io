@@ -254,7 +254,7 @@ tbody tr:nth-child(odd){
 
                 
 tbody tr:nth-child(even){
-  background-color:#FFFFFF;
+  background-color:#E6FFFF;
 }
 
 .flex-container {
@@ -266,7 +266,7 @@ tbody tr:nth-child(even){
 }
 .project-card {
   flex: 1 1 350px;                /* Responsive card width */
-  background-color: #f9f9f9;    /* Light grey background */
+  background-color: #E6FFFF;    /* Light blue background */
   border: 1px solid #ddd;       /* Light border */
   padding: 15px;                  /* Space inside card */
   border-radius: 8px;             /* Rounded corners */
@@ -280,39 +280,44 @@ tbody tr:nth-child(even){
 .project-card h3 {
   margin-top: 10px;     /* Space above heading */
   font-size: 1.1rem;    /* Slightly larger heading text */
-  color: #2c3e50;     /* Dark grey-blue colour */
+  color: #335966;     /* Dark blue colour */
 }
 
 /* ---------- 8) Cards / Gallery ------------- */
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
-  margin-top: 20px;
+.card-grid {
+  display: grid;                                                  /* Grid layout */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));    /* Responsive columns */
+  gap: var(--spacing);                                            /* Space between grid items */
 }
-
-.project-card {
-  flex: 1 1 150px;
-  background-color: #E6FFFF;
-  border: 1px solid #E6FFFF;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 1px 2px 4px #E6FFFF;
+.card {
+  background: #E6FFFF;             /* Light blue background */
+  border-radius: var(--radius);   /* Rounded corners */
+  box-shadow: var(--shadow);      /* Soft shadow */
+  overflow: hidden;               /* Hides overflowing content */
+  display: flex;                  /* Flex layout inside card */
+  flex-direction: column;         /* Stacks content vertically */
 }
-
-.project-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+.card img { 
+  width: 100%;                  /* Image fills card */
 }
-
-  .project-card h3 {
-  margin-top: 10px;
-  font-size: 1.1rem;
-  color: #335966;
+.card .content { 
+  padding: var(--spacing);      /* Space around content */
 }
-
+.card h3 { 
+  margin-top: 0.4em;        /* Space above heading */
+  margin-bottom: 0.3em;     /* Space below heading */
+}
+.card p { 
+  color: var(--muted);      /* Muted text colour */
+  margin-bottom: 0.8em;     /* Space below paragraph */
+}
+.card a { 
+  display: block;            /* Makes the whole card area clickable */
+}
+.card:hover { 
+  transform: translateY(-2px);   /* Lifts card up slightly on hover */
+  transition: transform .15s ease; /* Smooth hover animation */
+}
 
 /* ---------- 9) Forms ----------------------- */
 form {
