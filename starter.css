@@ -21,6 +21,8 @@ img {
   max-width: 100%;  /* Ensures images never exceed container width */
   height: auto;     /* Maintains image aspect ratio */
   display: block;   /* Removes small gap under images by making them block-level */
+  box-shadow: var(--shadow);   /* adds shadow */
+  border-radius: var(--radius); /* smooth corners */
 }
 
 /* ---------- 2) Core Theme Tokens ----------- */
