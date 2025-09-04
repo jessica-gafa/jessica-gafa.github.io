@@ -161,74 +161,60 @@ nav a:focus-visible {
   display: none;
 }
 
-/* Hamburger button */
+/* Hamburger inside the fixed nav bar */
 .hamburger {
-  display: none;
+  position: absolute;   /* anchor inside nav */
+  top: 1px;            /* distance from top of bar */
+  left: 16px;           /* distance from left of bar */
   font-size: 28px;
-  cursor: pointer;
   color: white;
-  padding: 10px;
+  cursor: pointer;
+  display: none;        /* only shows on mobile */
 }
 
-/* Mobile styles */
 @media (max-width: 768px) {
   .hamburger {
-    display: block; /* Show hamburger only on small screens */
-  }
-
-  .nav-links {
-    display: none;  /* Hide menu by default */
-    flex-direction: column;
-    background-color: #335966;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-
-  #menu-toggle:checked + .hamburger + .nav-links {
-    display: flex; /* Show menu when box checked */
-  }
-
-  .nav-links li {
-    text-align: center;
-    padding: 10px 0;
+    display: block;
   }
 }
 
-body {
-  padding-top: 100px;
-  margin: 40;
+/* Mobile menu: smooth slide + readable spacing */
+@media (max-width:768px){
+  nav { padding-top:44px; } /* make room for the fixed hamburger */
+
+  nav .nav-links{
+    display:flex;              /* It will animate height instead of display */
+    flex-direction:column;
+    background:#335966;
+    width:100%;
+    margin:0; padding:0;
+    max-height:0;              /* collapsed */
+    overflow:hidden;           /* hide contents while closed */
+    transition:max-height .25s ease;
+    border-top:1px solid rgba(255,255,255,.15);
+  }
+
+  /* open state via checkbox */
+  #menu-toggle:checked ~ .nav-links{
+    max-height:70vh;           /* enough to show all links */
+  }
+
+  .hamburger{ display:block; }
+
+  nav .nav-links li{ text-align:center; }
+  nav .nav-links a{
+    display:block;
+    padding:14px 18px;
+    font-size:16px;
+    line-height:1.2;
+    color:#fff;
+  }
+  nav .nav-links a:hover{ background:rgba(255,255,255,.12); }
 }
 
-.active {
-  text-decoration: underline;   /* Indicates active page link */
-}
-@media (max-width: 640px) {
-  nav .container {
-    flex-wrap: wrap;
-  }
-
-  nav ul {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 4px; /* optional: reduces spacing between buttons */
-  }
-
-  nav li {
-    flex: 1 1 auto; /* let nav items wrap cleanly */
-    text-align: center;
-  }
-
-  nav a {
-    font-size: 14px;       /* slightly smaller font for mobile */
-    padding: 8px 6px;       /* tighter padding so they fit better */
-  }
-
-  body {
-    padding-top: 140px;    /* adds extra space under the now-wrapped nav */
-  }
-}
+/* Change ☰ to ✕ when open (still no JS) */
+.hamburger::before{ content:"☰"; }
+#menu-toggle:checked + .hamburger::before{ content:"✕"; }
 
 /* ---------- 7) Sections -------------------- */
 .section {
