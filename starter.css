@@ -156,6 +156,45 @@ nav a:focus-visible {
   outline-offset: 2px;                    /* outline offset for increased accessibility/ keyboard-focus styling */
 }
 
+/* Hide checkbox */
+#menu-toggle {
+  display: none;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: white;
+  padding: 10px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block; /* Show hamburger only on small screens */
+  }
+
+  .nav-links {
+    display: none;  /* Hide menu by default */
+    flex-direction: column;
+    background-color: #335966;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  #menu-toggle:checked + .hamburger + .nav-links {
+    display: flex; /* Show menu when box checked */
+  }
+
+  .nav-links li {
+    text-align: center;
+    padding: 10px 0;
+  }
+}
+
 body {
   padding-top: 100px;
   margin: 40;
