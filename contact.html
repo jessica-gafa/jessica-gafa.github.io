@@ -28,15 +28,17 @@
     <main>
         <section class="section">
             <h3>Contact Form</h3>
-            <form>
-                <label for="name">Full Name</label>
-                <input id="name" type="text" placeholder="FirstName LastName" required minlength="6" autocomplete="name">
-                <label for="email">Email</label>
-                <input id="email" type="email" placeholder="name@example.com" required autocomplete="email">
-                <label for="message">Message></label>
-                <textarea id="message" name="message" placeholder="How can I help?" required minlength="6"></textarea>
-                <input type="text" name="honey" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
-                <button type="submit">Send</button>
+            <form id="contactform"  action="https://formsubmit.co/shopping.jess05@gmail.com" method="post" autocomplete="on">
+                <fieldset>
+                    <label for="name">Full Name</label>
+                    <input id="name" type="text" placeholder="FirstName LastName" required minlength="6" autocomplete="name">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" placeholder="name@example.com" required autocomplete="email">
+                    <label for="message">Message></label>
+                    <textarea id="message" name="message" placeholder="How can I help?" required minlength="6"></textarea>
+                    <input type="text" name="honey" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
+                    <button type="submit">Send</button>
+                </fieldset>
             </form>
         </section>
     </main>
