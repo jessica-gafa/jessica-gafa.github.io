@@ -114,6 +114,8 @@ header h1 {
   margin: 32px auto;                                  /* Centers heading */
   color: var(--head);                                 /* Special header colour */
 }
+
+/*Colour of Nav Bar*/
 nav {
   background-color: #335966;
   width: 100%;
@@ -136,8 +138,9 @@ nav ul {
 nav li {
   margin: 1px;
   flex-wrap: nowrap;
-            }
+  }
 
+  /*font colour, size, font and spacing*/
 nav a {
   display: block;
   padding: 12px 10px;
@@ -147,6 +150,7 @@ nav a {
   font-family: 'Courier New', Courier, monospace;
 }
 
+/*hover colour*/
 nav a:hover {
   background-color: #FFFFFF;
   color: black;
@@ -172,6 +176,7 @@ nav a:focus-visible {
   display: none;        /* only shows on mobile */
 }
 
+/*Adding hamburger on smaller screens only*/
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -180,7 +185,7 @@ nav a:focus-visible {
 
 /* Mobile menu: smooth slide + readable spacing */
 @media (max-width:768px){
-  nav { padding-top:44px; } /* make room for the fixed hamburger */
+  nav { padding-top:44px; } /* make room for the hamburger */
 
   nav .nav-links{
     display:flex;              /* It will animate height instead of display */
@@ -201,7 +206,7 @@ nav a:focus-visible {
 
   .hamburger{ display:block; }
 
-  nav .nav-links li{ text-align:center; }
+  nav .nav-links li{ text-align:center; }   /* Links are in the centre of the drop down Nav bar*/
   nav .nav-links a{
     display:block;
     padding:14px 18px;
@@ -212,7 +217,7 @@ nav a:focus-visible {
   nav .nav-links a:hover{ background:rgba(255,255,255,.12); }
 }
 
-/* Change ☰ to ✕ when open (still no JS) */
+/* Change ☰ to ✕ when open*/
 .hamburger::before{ content:"☰"; }
 #menu-toggle:checked + .hamburger::before{ content:"✕"; }
 
@@ -251,9 +256,12 @@ nav a:focus-visible {
   height: auto;           /* Maintains aspect ratio */
   padding-bottom: 25px;   /* Space below image so text isn’t too close */
 }
+/*Spacing under the video*/
 .embed-video {
   padding-bottom: 25px;
 }
+
+/*Table design/layout*/
 table {
   width:100%;
   border-collapse: collapse;
@@ -297,6 +305,87 @@ tbody tr:nth-child(even){
   border: 1px solid #ddd;       /* Light border */
   padding: 15px;                  /* Space inside card */
   border-radius: 8px;             /* Rounded corners */
+
+  /* Make tables responsive on small screens */
+/* Keep sections from showing a horizontal scrollbar just in case */
+.section { overflow-x: hidden; }
+
+/* Mobile table = stacked cards, no horizontal scroll */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  thead { display: none; }
+
+  /* Each row becomes a card */
+  tr {
+    background: #E6FFFF;
+    border: 1px solid #335966;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.06);
+    padding: 10px 12px;
+    margin: 10px 0;     /* smaller gap between rows */
+  }
+
+  /* Label + value in two columns that wrap nicely */
+  td {
+    display: grid;
+    grid-template-columns: minmax(9ch, 40%) 1fr; /* flexible label/value */
+    column-gap: 10px;
+    padding: 6px 0;
+    border: none;
+    text-align: left;
+    font-size: 0.95rem;
+    overflow-wrap: anywhere;   /* prevents sideways overflow */
+    word-break: break-word;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: #335966;
+  }
+}@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+    width: 100%;
+  }
+
+  /* Hide the table header */
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    border: 1px solid #335966;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #E6FFFF; /* keep your pale blue */
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  td:last-child {
+    border-bottom: none; /* remove border from last row item */
+  }
+
+  /* Add labels from the headers before each cell */
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #335966;
+  }
+}
   box-shadow: 1px 2px 4px rgba(0,0,0,0.1);      /* Soft shadow */
 }
 .project-card img {
@@ -308,6 +397,54 @@ tbody tr:nth-child(even){
   margin-top: 10px;     /* Space above heading */
   font-size: 1.1rem;    /* Slightly larger heading text */
   color: #335966;     /* Dark blue colour */
+}
+
+/*Fixing table layout on small screens*/
+.table-scroll {
+  overflow-x: auto;                  /* enable sideways scroll if needed */
+  -webkit-overflow-scrolling: touch; /* smooth on iOS */
+  border-radius: var(--radius);      /* match the section rounding */
+}
+
+.table-scroll table {
+  min-width: 600px; /* or whatever fits the columns */
+  width: 100%;
+}
+
+/* Mobile-friendly table spacing */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;       /* stack everything */
+    width: 100%;          /* no overflow */
+  }
+
+  thead {
+    display: none;        /* hide the table header */
+  }
+
+  tr {
+    margin-bottom: 8px;   /* small gap between entries */
+    border: 1px solid #335966;
+    border-radius: 6px;
+    background-color: #E6FFFF;
+    padding: 6px;
+  }
+
+  td {
+    border: none;
+    padding: 6px;
+    text-align: left;
+    font-size: 0.9rem;
+    word-wrap: break-word; /* prevent text overflow */
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;   /* label width */
+    color: #335966;
+  }
 }
 
 /* ---------- 8) Cards / Gallery ------------- */
@@ -457,6 +594,21 @@ footer .container {
 
 .adjacenttext {
   max-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .adjacentpic {
+    flex-direction: column;  /* stack items vertically */
+    text-align: center;      /* optional: center the text under the image */
+  }
+
+  .adjacentpic img {
+    margin: 0 auto;          /* center image horizontally */
+  }
+
+  .adjacenttext {
+    max-width: 100%;         /* let text use full width */
+  }
 }
 
 /* End of starter.css */
