@@ -27,13 +27,13 @@ img {
 
 /* ---------- 2) Core Theme Tokens ----------- */
 :root {
-  --brand: #335966;        /* primary colour */
+  --brand: #00674F;        /* primary colour */
   --brand-2: #FFFFFF;      /* accent colour */
-  --bg: #CCF2FF;           /* page background */
+  --bg: #00674F;           /* page background */
   --head: #335966;         /* main header colour */
   --text: Black;         /* default text */
   --muted: #335966;        /* secondary text */
-  --surface: #E6FFFF;      /* card/section bg */
+  --surface: #FFFFFF;      /* card/section bg */
   --radius: 12px;          /* rounded corners */
   --shadow: 0 4px 12px rgba(0,0,0,0.08);    /* Subtle shadow for depth */
   --spacing: 16px;         /* base spacing unit */
@@ -117,7 +117,7 @@ header h1 {
 
 /*Colour of Nav Bar*/
 nav {
-  background-color: #335966;
+  background-color: #338572;
   width: 100%;
   position: fixed;
   top: 0;
@@ -130,7 +130,7 @@ nav ul {
   padding: 5px;
   margin: 5px;
   display: flex;
-  background-color: #335966;
+  background-color: #338572;
   justify-content: center;
   flex-wrap: wrap;
 }
@@ -190,13 +190,13 @@ nav a:focus-visible {
   nav .nav-links{
     display:flex;              /* It will animate height instead of display */
     flex-direction:column;
-    background:#335966;
+    background:#00674F;
     width:100%;
     margin:0; padding:0;
     max-height:0;              /* collapsed */
     overflow:hidden;           /* hide contents while closed */
     transition:max-height .25s ease;
-    border-top:1px solid rgba(255,255,255,.15);
+    border-top:1px solid #00674F;
   }
 
   /* open state via checkbox */
@@ -214,7 +214,7 @@ nav a:focus-visible {
     line-height:1.2;
     color:#fff;
   }
-  nav .nav-links a:hover{ background:rgba(255,255,255,.12); }
+  nav .nav-links a:hover{ background: #cce0db;; }
 }
 
 /* Change ☰ to ✕ when open*/
@@ -269,7 +269,7 @@ table {
   font-family: 'Courier New', Courier, monospace;
 }
 th, td {
-  border: 1px solid #335966;
+  border: 1px solid #000000;
   padding: 10px 12px;
   text-align: left;
 }
@@ -279,7 +279,7 @@ thead {
 }
 
 th {
-  color: #335966;
+  color: #000000;
   font-weight: bold;
 }
 
