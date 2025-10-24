@@ -2642,6 +2642,7 @@ input, select, textarea {
 			display: block;
 			margin: 4rem 0;
 			width: 90%;
+			text-align: center;
 		}
 
 			.image.main:first-child {
@@ -4699,4 +4700,58 @@ input, select, textarea {
 
 
 
-/*Resume Formating*/
+/*Resume Formating* - ADDED BY JESSICA GAFA/
+#resume {
+  padding: 2rem;
+  text-align: center;
+  background-color: #f9f9f9; /* subtle background to make it pop */
+
+	#resume h2 {
+		color: #00674F;
+		margin-bottom: 0.5rem;
+		}
+
+	#resume p {
+		color: #333;
+		margin-bottom: 1.5rem;
+		font-size: 1rem;
+		}
+
+	#resume figure {
+		display: inline-block;
+		margin: 0;
+		}
+
+	#resume figure a img {
+		border: 3px solid #00674F;        /* green border around thumbnail */
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);  /* subtle shadow */
+		border-radius: 8px;               /* optional rounded corners */
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+	#resume figure a img:hover {
+		transform: scale(1.02);
+		box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+		}
+
+	#resume figcaption {
+		margin-top: 0.5rem;
+		font-size: 1rem;
+		color: #00674F;
+		font-weight: 600;
+		}
+
+	#resume {
+		background-color: #ffffff;
+		text-align: center;
+		margin: 0 auto;
+		width: calc(100% - 4rem);
+		max-width: 72rem;
+		z-index: 2;
+		}
+
+		#resume > * {
+				padding: 4rem 4rem 2rem 4rem ;
+				border-top: solid 2px #eeeeee;
+				margin: 0;
+			}
