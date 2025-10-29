@@ -4713,13 +4713,13 @@ input, select, textarea {
 body.resume-page #intro .button.large {
   background-color: #ffffff;
   color: #00674F !important;       /* dark green text */
-  border: 3px solid #338572;
+  border: 6px solid #338572;
   font-weight: 700;
   text-transform: none;
   letter-spacing: normal;
-  font-size: 0.9rem;               /* match original font size */
+  font-size: 1.5rem;               /* match original font size */
   height: 3.5rem;                  /* match original height */
-  line-height: 3.5rem;            /* vertically center text */
+  line-height: 3rem;            /* vertically center text */
   padding: 0 2.75rem;             /* match original padding */
   transition: all 0.3s ease;
 }
@@ -4727,4 +4727,234 @@ body.resume-page #intro .button.large {
 body.resume-page #intro .button.large:hover {
   background-color: #00674F;
   color: #ffffff !important;
+}
+
+.heading-with-image {
+  display: flex;                /* puts them side by side */
+  align-items: center;          /* vertically aligns them */
+  justify-content: center;      /* centers the whole block */
+  gap: 20px;                    /* space between image and heading */
+  margin-top: 2rem;
+}
+
+.profile-pic {
+  width: 120px;                 /* adjust size as needed */
+  height: auto;
+  border-radius: 50%;          /* keeps your nice circle look */
+  border: 3px solid #00674F;   /* matches your site theme */
+}
+
+.heading-with-image h2 {
+  margin: 0;
+  font-size: 1.8rem;           /* adjust text size */
+  font-weight: 800;
+}
+
+/* timer styling */
+:root{
+  --green-700:#00674F;  /* main dark green */
+  --green-500:#338572;  /* navbar green */
+  --mint-100:#CCE0DB;   /* light panels */
+  --surface:#FFFFFF;
+  --text:#0b0f0e;
+  --radius:1rem;
+  --shadow:0 6px 20px rgba(0,0,0,.08);
+  --gap:1rem;
+  --font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  
+}
+
+.timer{
+  font-family: var(--font);
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  background: var(--surface);
+  border: 2px solid var(--green-500);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.timer__title{
+  text-align:center;
+  font-weight: 800;
+  letter-spacing:.02em;
+  margin: 0 0 1rem;
+}
+
+.mode{
+  display:flex;
+  justify-content:center;
+  gap:.25rem;
+  background: var(--mint-100);
+  border-radius: .75rem;
+  padding: .25rem;
+  margin-bottom: 1rem;
+}
+.mode button{
+  border:0;
+  padding:.5rem .9rem;
+  border-radius:.75rem;
+  background: transparent;
+  font-weight:650;
+  cursor:pointer;
+}
+.mode button[aria-pressed="true"]{
+  background: var(--green-500);
+  color:#fff;
+}
+.mode button:focus-visible{
+  outline:3px solid var(--green-700);
+  outline-offset:2px;
+}
+
+.display{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin: 0 auto 1rem;
+  width:min(92%, 420px);
+  aspect-ratio: 10/4;
+  background: var(--mint-100);
+  border: 2px solid var(--green-500);
+  border-radius:.75rem;
+  font-variant-numeric: tabular-nums;
+}
+.display__time{
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing:.03em;
+}
+
+.duration{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  align-items:center;
+  gap:.5rem .75rem;
+  width:min(92%, 420px);
+  margin: 0 auto 1rem;
+}
+.sr-only{position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;overflow:hidden;}
+.duration input{
+  padding:.6rem .75rem;
+  border:2px solid var(--green-500);
+  border-radius:.5rem;
+  font-weight:600;
+}
+.duration small{opacity:.75}
+
+.controls{
+  display:flex;
+  gap: var(--gap);
+  justify-content:center;
+  flex-wrap:wrap;
+}
+.btn{
+  border:2px solid var(--green-500);
+  background:#fff;
+  padding:.65rem 1.1rem;
+  border-radius:.75rem;
+  font-weight:800;
+  cursor:pointer;
+  min-width: 96px;
+}
+.btn--primary{background:var(--green-500);color:#fff}
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn:focus-visible{outline:3px solid var(--green-700);outline-offset:2px}
+
+.is-finished .display{animation: flash 900ms ease-in-out 1}
+@keyframes flash{50%{background:#fff}}
+
+.kbd-help{
+  text-align:center;
+  margin-top:.75rem;
+  font-size:.9rem;
+  opacity:.75
+}
+
+@media (max-width:480px){
+  .controls{gap:.5rem}
+  .btn{min-width:unset}
+}
+
+/* --- switch wrapper --- */
+.mode-switch{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:.75rem;
+  margin-bottom:1rem;
+  font-weight:700;
+}
+
+/* --- actual switch --- */
+.switch{
+  position:relative;
+  width:58px;
+  height:30px;
+  display:inline-block;
+}
+.switch input{
+  appearance:none;
+  -webkit-appearance:none;
+  width:0;
+  height:0;
+  opacity:0;
+  position:absolute;
+}
+.slider{
+  position:absolute;
+  inset:0;
+  background: var(--mint-100);
+  border:2px solid var(--green-500);
+  border-radius: 999px;
+  transition: background .2s ease;
+}
+.slider::before{
+  content:"";
+  position:absolute;
+  top:50%;
+  left:4px;
+  width:22px;
+  height:22px;
+  transform: translateY(-50%);
+  background:#fff;
+  border:2px solid var(--green-500);
+  border-radius:50%;
+  transition: transform .2s ease;
+}
+
+/* checked = Count Down */
+.switch input:checked + .slider{
+  background: var(--green-500);
+}
+.switch input:checked + .slider::before{
+  transform: translate(24px, -50%);
+}
+
+/* keyboard focus */
+.switch input:focus-visible + .slider{
+  outline:3px solid var(--green-700);
+  outline-offset:2px;
+}
+
+/* Make the timer input look like text */
+.display__time {
+  font-size: clamp(2.4rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: .03em;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: none;
+  /* Prevent layout jitter on mobile */
+  line-height: 1.1;
+}
+
+/* When read-only, keep the caret hidden visually */
+.display__time[readonly] {
+  caret-color: transparent;
 }
