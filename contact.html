@@ -38,25 +38,77 @@
       
     </nav>
 
-    </header>
+    
     <main>
-        <!-- Contact Form-->
-        <section class="section">
-            <h3>Contact Form</h3>
-            <form id="contactform"  action="https://formsubmit.co/dc464b1445e530bd0e56200ad1414e82" method="post" autocomplete="on">
-                <fieldset>
-                    <label for="name">Full Name</label>
-                    <input id="name" type="text" placeholder="FirstName LastName" required minlength="6" autocomplete="name">
-                    <label for="email">Email</label>
-                    <input id="email" type="email" placeholder="name@example.com" required autocomplete="email">
-                    <label for="message">Message></label>
-                    <textarea id="message" name="message" placeholder="How can I help?" required minlength="6"></textarea>
-                    <input type="text" name="honey" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;">
-                    <button type="submit">Send</button>
-                </fieldset>
-            </form>
-        </section>
+        <!-- Contact Form -->
+       <div id="main">
+            <section>
+                <h2 class="no-divider">Contact Me</h2>
+                <p>I’d love to hear from you! Whether you’d like to discuss teaching ideas, share resources, or connect about future opportunities, feel free to get in touch using the form below.</p>
+            </section>
+            <section class="contact-wrap">
+                <div class="contact-card">
+                <form
+                    id="contactform"
+                    class="contact-form"
+                    action="https://formsubmit.co/dc464b1445e530bd0e56200ad1414e82"
+                    method="post"
+                    autocomplete="on">
+                    <fieldset style="border:none; padding:0; margin:0;">
+                    <div class="form-row">
+                        <label for="name">Full Name</label>
+                        <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        placeholder="FirstName LastName"
+                        required
+                        minlength="6"
+                        autocomplete="name"/>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="email">Email</label>
+                        <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="name@example.com"
+                        required
+                        autocomplete="email"
+                        />
+                    </div>
+
+                    <div class="form-row">
+                        <label for="message">Message:</label>
+                        <textarea
+                        id="message"
+                        name="message"
+                        placeholder="How can I help?"
+                        required
+                        minlength="6"
+                        ></textarea>
+                    </div>
+
+                    <!-- Hidden spam trap (honeypot) -->
+                    <input
+                        type="text"
+                        name="honey"
+                        tabindex="-1"
+                        aria-hidden="true"
+                        style="position:absolute;left:-9999px;"
+                    />
+
+                    <div class="contact-actions">
+                        <button type="submit" class="btn">Send</button>
+                    </div>
+                    </fieldset>
+                </form>
+                </div>
+            </section>
+        </div>
     </main>
+
    
     <div id="copyright">
       <ul>

@@ -1,4 +1,3 @@
-@import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
 
 /*
@@ -3242,7 +3241,6 @@ input, select, textarea {
 			width: 100%;
 			height: 100%;
 			background-color: #00674F;
-			background-image: url("../../images/overlay.png"), linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url("../../images/bg.jpg");
 			background-size: auto,								auto,														100% auto;
 			background-position: center,								center,														top center;
 			background-repeat: repeat,								no-repeat,													no-repeat;
@@ -3626,7 +3624,7 @@ input, select, textarea {
 	line-height: 4rem;
 	margin: -4rem auto 0 auto;
 	overflow: hidden;
-	padding: 0 2rem 0 0;
+	padding: 0; /* removes the gap on the right edge */
 	position: relative;
 	width: calc(100% - 4rem);
 	max-width: 72rem;
@@ -3646,7 +3644,7 @@ input, select, textarea {
 /* Links — evenly spaced */
 #nav ul.links {
 	display: flex;
-	justify-content: space-between; /* spreads tabs evenly */
+	justify-content: stretch; /* spreads tabs evenly */
 	align-items: center;
 	width: 100%;
 	font-family: "Source Sans Pro", Helvetica, sans-serif;
@@ -4650,14 +4648,15 @@ input, select, textarea {
 
 	}
 
+/* ALL CODE FROM THIS POINT IS WRITTEN BY JESSICA GAFA*?
 
 
-
-/*Resume Formating* - ADDED BY JESSICA GAFA/
+/*Resume Formating*/
 #resume {
   padding: 2rem;
   text-align: center;
   background-color: #f9f9f9; /* subtle background to make it pop */
+}
 
 	#resume h2 {
 		color: #00674F;
@@ -4709,7 +4708,7 @@ input, select, textarea {
 				margin: 0;
 			}
 
-/* Special styling for Resume button ONLY on resume.html - ADDED BY JESSICA GAFA*/
+/* Special styling for Resume button ONLY on resume.html*/
 body.resume-page #intro .button.large {
   background-color: #ffffff;
   color: #00674F !important;       /* dark green text */
@@ -4762,6 +4761,7 @@ body.resume-page #intro .button.large:hover {
   --gap:1rem;
   --font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   
+  
 }
 
 .timer{
@@ -4774,6 +4774,7 @@ body.resume-page #intro .button.large:hover {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   text-align: center;
+  size: 100%;
 }
 
 .timer__title{
@@ -4814,7 +4815,7 @@ body.resume-page #intro .button.large:hover {
   align-items:center;
   justify-content:center;
   margin: 0 auto 1rem;
-  width:min(92%, 420px);
+  width:92%;
   aspect-ratio: 10/4;
   background: var(--mint-100);
   border: 2px solid var(--green-500);
@@ -4957,4 +4958,465 @@ body.resume-page #intro .button.large:hover {
 /* When read-only, keep the caret hidden visually */
 .display__time[readonly] {
   caret-color: transparent;
+}
+
+/* 1) Make the content band white and allow children to overflow (no clipping) */
+#main { background:#fff; }
+#main > section {
+  overflow: visible;                 /* stop cutting off rounded corners/shadows */
+  padding-left: clamp(1rem, 3vw, 2rem);
+  padding-right: clamp(1rem, 3vw, 2rem);
+}
+/* Some Massively builds draw a top divider with a pseudo-element */
+#main > section::before { display:none; }
+
+/* 2) Center the timer card and keep its full border visible */
+.timer {
+  width: min(92vw, 640px);           /* responsive width cap */
+  margin: 2rem auto;                 /* centers it */
+  box-sizing: border-box;            /* ensures border is included in width */
+  position: relative;                /* lets us layer above any stray decor */
+  z-index: 1;
+}
+
+/* 3) If the *parent* section was set to flex somewhere else, let the timer stretch */
+#main > section { display: block; }
+
+/* 4) Safety: no ancestor should hide the timer’s rounded corners/shadow */
+.timer, .timer * { overflow: visible; }
+
+/* === Center the timer and keep its border visible === */
+#main .timer {
+  max-width: 640px;
+  width: min(92vw, 640px);
+  margin: 2.5rem auto !important;   /* centers horizontally; extra top space clears any line */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1000;                     /* draw above any decorative layers */
+}
+
+/* === Do NOT let wrappers clip rounded corners or shadows === */
+#main, 
+#main > section,
+#main .post,
+#main .inner {
+  overflow: visible !important;
+}
+
+/* === Kill Massively's section divider no matter which wrapper is used === */
+#main section::before,
+#main .post::before,
+#main .major::before,
+#main .inner::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* (Optional) If your page has a white content band, keep it */
+#main { background: #fff; }
+
+
+/* ===== Contact form card ===== */
+.contact-wrap{
+  max-width: 720px;
+  margin: 1.75rem auto 2.25rem;
+  padding: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.contact-card{
+  background: var(--mint-100);
+  border: 2px solid var(--green-500);
+  border-radius: 1rem;
+  box-shadow: var(--shadow);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  width: 100%;             /* make it fill the wrapper */
+  flex: 1 1 auto;          /* let it stretch */
+}
+
+
+/* Optional helper for the blurb above the card */
+.contact-lead{
+  text-align: center;
+  max-width: 58ch;
+  margin: 0 auto 1rem;
+  line-height: 1.5;
+  opacity: .9;
+}
+
+/* ===== Fields ===== */
+.contact-form{
+  display: grid;
+  gap: 1rem;
+}
+
+.form-row{
+  display: grid;
+  gap: .5rem;
+}
+
+.contact-form label{
+  font-weight: 700;
+  font-size: .9rem;
+  color: var(--text);
+}
+
+/* Inputs + textarea share the same look */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea{
+  width: 100%;
+  border: 2px solid #b7cfc8;       /* subtle inner border to match the mockup */
+  background: #fff;
+  border-radius: .6rem;
+  padding: .7rem .9rem;
+  font: inherit;
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(0,0,0,.03);
+}
+
+/* Taller message box */
+.contact-form textarea{
+  min-height: 9.5rem;               /* ~ the height in the wireframe */
+  resize: vertical;
+}
+
+/* Placeholder tone */
+.contact-form ::placeholder{
+  color: #98a7a2;
+}
+
+/* Focus state: green outline ring, keep clean interior */
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline: none;
+  border-color: var(--green-500);
+  box-shadow: 0 0 0 3px rgba(51,133,114,.25);
+}
+
+/* ===== Actions (Submit button area) ===== */
+.contact-actions{
+  display:flex;
+  justify-content: flex-end;
+  margin-top: .25rem;
+}
+
+/* If you already have .btn styles, this just tweaks spacing */
+.contact-actions .btn{
+  font-weight: 800;
+  padding: .65rem 1.1rem;
+  border-radius: .75rem;
+  border: 2px solid var(--green-500);
+  background: var(--green-500);
+  color: #fff;
+  cursor: pointer;
+   display: flex;             
+  align-items: center;       /*vertical centering */
+  justify-content: center;   /*horizontal centering */
+  text-align: center; 
+}
+.contact-actions .btn:focus-visible{
+  outline: 3px solid var(--green-700);
+  outline-offset: 2px;
+}
+
+/* ===== Responsive tweak ===== */
+@media (max-width: 520px){
+  .contact-card{ padding: 1rem; }
+}
+
+.contact-wrap{
+  width: 100%;                               /* make it full width */
+  max-width: clamp(720px, 92vw, 1000px);     /* responsive but not tiny */
+  margin: 1.75rem auto 2.25rem;
+  padding: clamp(1rem, 2.5vw, 1.25rem);
+
+  display: flex;                             /* center the form */
+  justify-content: center;
+  align-items: center;                       /* remove this line if you don’t want vertical centering */
+}
+
+/* Remove the grey line above the contact form */
+#main > section {
+  border-top: none;
+}
+
+/* --- Fix the border being cut off under the <h2> --- */
+
+/* remove the faint divider that Massively adds after headings */
+#main section h2::after,
+#main section.major h2::after,
+#main > section::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* allow the timer to breathe below the heading */
+#main section h2 {
+  margin-bottom: 1.5rem; /* add space under the heading */
+}
+
+/* make sure the section doesn't hide rounded edges */
+#main section {
+  overflow: visible !important;
+}
+
+/* keep the timer perfectly centred and visible */
+#main .timer {
+  margin: 2rem auto !important;
+  width: min(92vw, 640px);
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
+
+/* 1) Kill every possible divider under/around the H2 in Massively */
+#main > section::before,
+#main > .post::before,
+#main section.major::before,
+#main header.major::after,
+#main section h2::after,
+#main .post h2::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* 2) Make sure wrappers don't shave rounded corners/shadows */
+#main > section,
+#main > .post {
+  overflow: visible !important;
+  border-top: 0 !important; /* some builds add an actual border, not just ::before */
+}
+
+/* 3) Give the H2 some breathing space so the timer sits below any leftover rule */
+#main section h2,
+#main .post h2 {
+  margin-bottom: 1.75rem !important;
+}
+
+/* 4) Center the timer and guarantee its border is fully visible */
+#main .timer {
+  max-width: 640px;
+  width: min(92vw, 640px);
+  margin: 2rem auto 2.5rem !important; /* extra top space just in case */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10; /* draw above any stray decorative layers */
+}
+
+/* 5) Last-resort mask: hide any hairline still sitting under the H2 */
+#main .timer::before {
+  content: "";
+  position: absolute;
+  top: -10px;         /* cover the area where the divider would sit */
+  left: -10px;
+  right: -10px;
+  height: 16px;
+  background: #fff;   /* same as your surface */
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+  z-index: -1;        /* sits just behind the card, still above the section */
+}
+
+/* Keep the white content band */
+#main { background: #fff; }
+
+/* Put all section/heading decorations BEHIND your content */
+#main > section,
+#main section h2,
+#main header.major {
+  position: relative;
+  z-index: 0;                /* content context */
+}
+#main > section::before,
+#main section h2::after,
+#main header.major::after {
+  z-index: -1 !important;    /* push the line behind */
+  pointer-events: none;      /* just in case */
+}
+
+/* Make sure nothing clips rounded corners */
+#main > section { overflow: visible !important; }
+
+/* Center the timer and keep it above decorations */
+#main .timer {
+  position: relative;
+  z-index: 1;                /* draw above the line */
+  max-width: 640px;
+  width: min(92vw, 640px);
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+
+/* Remove JUST this heading's decorative rule and give it space */
+#main h2.no-divider::after {
+  content: none !important;
+  display: none !important;
+}
+
+#main h2.no-divider {
+  margin-bottom: 1.25rem !important; /* a little breathing room above the card */
+}
+
+/* Make sure the timer draws above anything else and isn't shaved */
+#main .timer {
+  position: relative;
+  z-index: 10;            /* sits above any heading decoration */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Safety: parent shouldn't clip rounded corners */
+#main > section { overflow: visible !important; }
+
+/* =============================== Video Resources — uniform, tall boxes with centered pills =============================== */
+
+#video-resources .video-grid {
+  display: grid;
+  row-gap: 3rem;                     /* space between rows */
+  column-gap: 2rem;                  /* space between columns */
+  grid-template-columns: repeat(2, 320px);
+  justify-content: center;
+}
+
+@media (max-width: 860px) {
+  #video-resources .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* light green card base */
+#video-resources .video-body {
+  background: #CCE0DB;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  width: 100%;
+  max-width: 320px;
+  height: 350px; /* fixed height for all boxes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+#video-resources .video-card:hover .video-body {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* fixed-height dark green pill at top */
+#video-resources .video-title-pill {
+  background: var(--brand, #00674F);
+  width: 85%;
+  max-width: 260px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  margin-top: 1.2rem;  /* space from top of light green box */
+}
+
+/* paragraph centered vertically in remaining space */
+#video-resources .video-body p {
+  color: #000;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 26ch;
+  position: absolute;
+  top: 45%;             /* start from middle */
+  transform: translateY(-20%); /* pull upward slightly for balance */
+  margin: 0 auto;
+}
+
+
+
+#video-resources .video-title-pill span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-align: center;
+}
+
+/* slight darken hover for pill */
+#video-resources .video-card:hover .video-title-pill {
+  background: #004c38;
+}
+
+/* ===============================
+   Placement Table Section
+   =============================== */
+
+#placement-history {
+  background-color: #FFFFFF;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+#placement-history h2 {
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-transform: none;
+}
+
+.placement-table-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.placement-table {
+  width: 85%;
+  max-width: 700px;
+  border-collapse: collapse;
+  font-family: 'Merriweather', serif;
+  background-color: #FFFFFF;
+}
+
+.placement-table th,
+.placement-table td {
+  border: 2px solid #00674F;
+  padding: 0.9rem 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.placement-table th {
+  background-color: #CCE0DB;
+  color: #000;
+  font-weight: 700;
+}
+
+.placement-table td {
+  color: #000;
+}
+
+.placement-table tr:nth-child(even) td {
+  background-color: #F9F9F9;
+}
+
+/* Professional History */
+#professional-history {
+  background-color: #FFFFFF;
+  padding: 2rem 3rem;
+  text-align: center;
+}
+
+#professional-history h2 {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+#professional-history p {
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #000;
 }

@@ -40,58 +40,82 @@
 
     <!-- Main (normal black text on white background) -->
     <div id="main">
-      <h2 class="timer__title">Classroom Timer</h2> 
+        <section class="no-top-rule">
+            <h2 class="no-divider">Classroom Timer</h2>
 
-        <section class="timer" id="timer">
+                <section class="timer" id="timer">
 
-        <!-- Mode switch (accessible) -->
-        <div class="mode-switch">
-            <span class="mode-switch__label">Count Up</span>
-            <label class="switch">
-            <input type="checkbox" id="modeSwitch" role="switch" aria-label="Toggle timer mode: Count Up / Count Down">
-            <span class="slider" aria-hidden="true"></span>
-            </label>
-            <span class="mode-switch__label">Count Down</span>
-        </div>
+                <!-- Mode switch (accessible) -->
+                <div class="mode-switch">
+                    <span class="mode-switch__label">Count Up</span>
+                    <label class="switch">
+                    <input type="checkbox" id="modeSwitch" role="switch" aria-label="Toggle timer mode: Count Up / Count Down">
+                    <span class="slider" aria-hidden="true"></span>
+                    </label>
+                    <span class="mode-switch__label">Count Down</span>
+                </div>
 
 
-        <!-- Display: now an input styled like a big timer -->
-        <div class="display" aria-live="polite" aria-atomic="true">
-            <input
-            id="timeField"
-            class="display__time"
-            value="00:00"
-            aria-label="Timer (mm:ss when counting down, read-only when counting up)"
-            inputmode="numeric"
-            pattern="^(?:\d{1,2}):[0-5]\d$"/>
-        </div>
+                <!-- Display: now an input styled like a big timer -->
+                <div class="display" aria-live="polite" aria-atomic="true">
+                    <input
+                    id="timeField"
+                    class="display__time"
+                    value="00:00"
+                    aria-label="Timer (mm:ss when counting down, read-only when counting up)"
+                    inputmode="numeric"
+                    pattern="^(?:\d{1,2}):[0-5]\d$"/>
+                </div>
 
-        <!-- Controls -->
-        <div class="controls">
-            <button type="button" class="btn btn--primary" id="startBtn">Start</button>
-            <button type="button" class="btn" id="stopBtn" disabled>Stop</button>
-            <button type="button" class="btn" id="clearBtn">Clear</button>
-        </div>
+                <!-- Controls -->
+                <div class="controls">
+                    <button type="button" class="btn btn--primary" id="startBtn">Start</button>
+                    <button type="button" class="btn" id="stopBtn" disabled>Stop</button>
+                    <button type="button" class="btn" id="clearBtn">Clear</button>
+                </div>
 
-        <p class="kbd-help">Space = Start/Stop • Esc = Clear</p>
+                <p class="kbd-help">Space = Start/Stop • Esc = Clear</p>
+                </section>
+
+        <section id="video-resources" class="no-top-rule"> 
+            <h2 class="no-divider">Video Resources</h2>
+
+            <div class="video-grid">
+                <article class="video-card" data-ytid="PUT_YT_ID">
+                    <a href="https://www.youtube.com/watch?v=ghnbTziR-xY" target="_blank" rel="noopener" class="video-link">
+                        <div class="video-body">
+                            <div class="video-title-pill"><span>Expanding Brackets</span></div>
+                            <p>A short video aimed at stage 4 on how to expand brackets using the rainbow method and the FOIL method.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="video-card" data-ytid="PUT_YT_ID">
+                    <a href="https://www.youtube.com/watch?v=ZcSrJPiQvHQ" target="_blank" rel="noopener" class="video-link">
+                        <div class="video-body">
+                            <div class="video-title-pill"><span>Slope Dude - Understanding the Gradient of a Straight Line</span></div>
+                            <p>'Slope Dude' is a video that helps to convey the idea of positive, negative, zero and undefined gradients in a practical way. This model explains the gradient of a straight line in a way that is relevant to students as it uses the example of going skiing. I often refer to this model for Stage 4 all the way to Stage 6.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="video-card" data-ytid="PUT_YT_ID">
+                    <a href="https://www.youtube.com/watch?v=V6pZyY6mM3g&list=RDV6pZyY6mM3g&start_radio=1" target="_blank" rel="noopener" class="video-link">
+                        <div class="video-body">
+                            <div class="video-title-pill"><span>The Itty-Bitty Dot - Adding and Subtracting Decimals</span></div>
+                            <p>'The Itty-Bitty Dot' is a song reminding students that when adding and subtracting decimals they need to line up the decimal points. The song is aimed at younger students making it more suitable for Stages 3 and 4.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="video-card" data-ytid="PUT_YT_ID">
+                    <a href="https://www.youtube.com/watch?v=nHg4RVqQ12E&list=RDnHg4RVqQ12E&start_radio=1" target="_blank" rel="noopener" class="video-link">
+                        <div class="video-body">
+                            <div class="video-title-pill"><span>Multiplying Decimals Song - Multiplying Decimals</span></div>
+                            <p>Similarly to the previous song, the 'Multiplying Decimals Song' is aimed for Stages 3 and 4. It is an instructional video explaining how to multiply decimals. The song involves examples and two different ways to add the decimal point back in.</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
         </section>
-
-        <link rel="stylesheet" href="assets/css/timer.css">
-
-        <!-- Modular JS: logic (pure) + UI (DOM/events) -->
-        <script type="module" src="assets/js/timer-ui.js"></script>
-
-        </div>
-
-  
-
-    <div id="copyright">
-      <ul>
-        <li>&copy; 2025 Jessica Gafa. All rights reserved.</li>
-        <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-      </ul>
-    </div>
-  </div>
+  <div>
   
   <!-- Scripts -->
   <script src="./assets/js/jquery.min.js"></script>
@@ -102,7 +126,13 @@
   <script src="./assets/js/util.js"></script>
   <script src="./assets/js/main.js"></script>
 
+ <!-- JS -->
+  <script type="module" src="./assets/js/timer-ui.js"></script>
+
   <!-- Audio -->
-  <audio id="alarmSound" src="audio/alarm.mp3.mp3" preload="auto"></audio>
+  <audio id="alarmAudio" preload="auto">
+    <source src="./audio/alarm.mp3" type="audio/mpeg"/>
+  </audio>
+
 </body>
 </html>
