@@ -1,36 +1,35 @@
 // assets/js/timer-logic.js
-
-// Pure timer engine using performance.now() to minimise drift.
-// Exports: ProTimer, formatMMSS, parseDuration
+// UI-compatible timer engine + helpers (HH:MM:SS up to 99:59:59)
 
 export class ProTimer {
-  constructor(onTick, onFinish){
-    this.mode = 'up';           // 'up' | 'down'
-    this.durationMs = 0;        // only used in countdown
+  // onTick(ms), onFinish?()
+  constructor(onTick, onFinish) {
+    this.mode = 'up';        // 'up' | 'down'
+    this.durationMs = 0;     // only used for countdown
     this.elapsedMs = 0;
     this.running = false;
     this._raf = null;
     this._startedAt = 0;
-    this.onTick = onTick;
-    this.onFinish = onFinish;
+    this.onTick = typeof onTick === 'function' ? onTick : () => {};
+    this.onFinish = typeof onFinish === 'function' ? onFinish : null;
   }
 
-  setMode(mode){
+  setMode(mode) {
     const wasRunning = this.running;
     this.stop();
-    this.mode = mode;
+    this.mode = mode === 'down' ? 'down' : 'up';
     this.elapsedMs = 0;
     this._emit();
     if (wasRunning) this.start();
   }
 
-  setDuration(ms){
+  setDuration(ms) {
     this.durationMs = Math.max(0, ms | 0);
     this.elapsedMs = 0;
     this._emit();
   }
 
-  start(){
+  start() {
     if (this.running) return;
     if (this.mode === 'down' && !this.durationMs) return;
 
@@ -43,17 +42,17 @@ export class ProTimer {
       const delta = now - this._startedAt;
       const t = this.elapsedMs + delta;
 
-      if (this.mode === 'down'){
+      if (this.mode === 'down') {
         const remaining = Math.max(0, this.durationMs - t);
-        this.onTick(remaining, this.mode);
-        if (remaining <= 0){
+        this.onTick(remaining);
+        if (remaining <= 0) {
           this.stop();
           this.elapsedMs = this.durationMs;
-          this.onFinish?.();
+          if (this.onFinish) this.onFinish();
           return;
         }
       } else {
-        this.onTick(t, this.mode);
+        this.onTick(t);
       }
       this._raf = requestAnimationFrame(tick);
     };
@@ -61,7 +60,7 @@ export class ProTimer {
     this._raf = requestAnimationFrame(tick);
   }
 
-  stop(){
+  stop() {
     if (!this.running) return;
     cancelAnimationFrame(this._raf);
     this._raf = null;
@@ -70,34 +69,47 @@ export class ProTimer {
     this.running = false;
   }
 
-  clear(){
+  clear() {
     this.stop();
     this.elapsedMs = 0;
     this._emit();
   }
 
-  _emit(){
-    if (this.mode === 'down'){
+  _emit() {
+    if (this.mode === 'down') {
       const remaining = Math.max(0, this.durationMs - this.elapsedMs);
-      this.onTick(remaining, this.mode);
+      this.onTick(remaining);
     } else {
-      this.onTick(this.elapsedMs, this.mode);
+      this.onTick(this.elapsedMs);
     }
   }
 }
 
-// Helpers stay pure
-export const formatMMSS = (ms) => {
-  const total = Math.max(0, Math.round(ms / 1000));
-  const m = Math.floor(total / 60);
-  const s = total % 60;
-  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
-};
+/* -------------------------- Helpers (HH:MM:SS) --------------------------- */
 
-export const parseDuration = (raw) => {
-  const m = (raw ?? '').trim().match(/^(\d{1,2}):([0-5]\d)$/);
+// Keep the name `formatMMSS` because the UI imports that identifier.
+// Implement it to format **HH:MM:SS** (hours 00–99).
+export function formatMMSS(ms) {
+  const total = Math.max(0, Math.floor(ms / 1000));
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  return (
+    String(Math.min(h, 99)).padStart(2, '0') + ':' +
+    String(m).padStart(2, '0') + ':' +
+    String(s).padStart(2, '0')
+  );
+}
+
+// Parse "HH:MM:SS" → milliseconds (rejects >99 hours or >59 mins/secs)
+export function parseDuration(str) {
+  const m = /^(\d{2}):(\d{2}):(\d{2})$/.exec(String(str) || '');
   if (!m) return 0;
-  const minutes = parseInt(m[1], 10);
-  const seconds = parseInt(m[2], 10);
-  return (minutes * 60 + seconds) * 1000;
-};
+  const h = +m[1], mi = +m[2], s = +m[3];
+  if (h > 99 || mi > 59 || s > 59) return 0;
+  return ((h * 3600) + (mi * 60) + s) * 1000;
+}
+
+/* Optional aliases if other code uses these names elsewhere */
+export const formatHHMMSS = formatMMSS;
+export const parseDurationHHMMSS = parseDuration;

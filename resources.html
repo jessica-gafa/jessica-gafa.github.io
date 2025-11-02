@@ -58,13 +58,13 @@
 
                 <!-- Display: now an input styled like a big timer -->
                 <div class="display" aria-live="polite" aria-atomic="true">
-                    <input
-                    id="timeField"
+                    <input id="timeField"
                     class="display__time"
-                    value="00:00"
-                    aria-label="Timer (mm:ss when counting down, read-only when counting up)"
+                    value="00:00:00"
                     inputmode="numeric"
-                    pattern="^(?:\d{1,2}):[0-5]\d$"/>
+                    maxlength="8"
+                    pattern="^\d{0,2}:?\d{0,2}:?\d{0,2}$">
+
                 </div>
 
                 <!-- Controls -->
